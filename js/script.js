@@ -9,12 +9,10 @@ document.addEventListener("DOMContentLoaded", () => {
     let cartData = [];
     let subtotal = 0;
 
-    // Show loader while fetching
     loader.classList.add("loader");
     loader.innerHTML = '<div class="loader-inner"></div>';
     document.body.appendChild(loader);
 
-    // Load cart data from local storage or fetch from API
     const savedCart = localStorage.getItem("cartData");
 
     if (savedCart) {
@@ -38,12 +36,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Save cart to local storage
     function saveCartToLocalStorage() {
         localStorage.setItem("cartData", JSON.stringify(cartData));
     }
 
-  // Render cart items dynamically
     function renderCartItems() {
         cartList.innerHTML = ""; // Clear any existing items
         cartData.forEach((item, index) => {
@@ -68,7 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
         addEventListeners();
     }
 
-    // Add event listeners for quantity change and item removal
     function addEventListeners() {
         document.querySelectorAll("#product-quantity input[type='number']").forEach((input) =>
             input.addEventListener("change", handleQuantityChange)
@@ -78,7 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
         );
     }
 
-    // Handle quantity change
     function handleQuantityChange(event) {
         const index = event.target.dataset.index;
         const newQuantity = parseInt(event.target.value);
@@ -90,11 +84,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Handle item removal with confirmation modal
     function handleItemRemove(event) {
         const index = event.target.dataset.index;
 
-        // Create a modal for confirmation
         const modal = document.createElement("div");
         modal.classList.add("modal");
         modal.innerHTML = `
@@ -106,7 +98,6 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
         document.body.appendChild(modal);
 
-        // Add event listeners for modal buttons
         document.getElementById("confirm-remove").addEventListener("click", () => {
             cartData.splice(index, 1);
             saveCartToLocalStorage();
@@ -120,7 +111,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Calculate and update subtotal and total
     function calculateTotals() {
         subtotal = cartData.reduce(
             (acc, item) => acc + item.price * item.quantity,
