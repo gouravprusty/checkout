@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function renderCartItems() {
-        cartList.innerHTML = ""; // Clear any existing items
+        cartList.innerHTML = "";
         cartData.forEach((item, index) => {
             const cartItem = document.createElement("div");
             cartItem.classList.add("cart-prod-details")
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
             0
         );
         subtotalEl.innerText = subtotal.toLocaleString('en-IN');
-        totalEl.innerText =  parseFloat(subtotal.toFixed(2)).toLocaleString('en-IN'); // Example tax 18%
+        totalEl.innerText =  parseFloat(subtotal.toFixed(2)).toLocaleString('en-IN');
     }
 
     const checkoutButton = document.querySelector(".cart-right-button");
