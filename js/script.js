@@ -116,8 +116,8 @@ document.addEventListener("DOMContentLoaded", () => {
             (acc, item) => acc + item.price * item.quantity,
             0
         );
-        subtotalEl.innerText = subtotal.toLocaleString('en-IN');
-        totalEl.innerText =  parseFloat(subtotal.toFixed(2)).toLocaleString('en-IN');
+        subtotalEl.innerText = `Rs. ${subtotal.toLocaleString('en-IN')}`;
+        totalEl.innerText =  `Rs. ${parseFloat(subtotal.toFixed(2)).toLocaleString('en-IN')}`;
     }
 
     const checkoutButton = document.querySelector(".cart-right-button");
